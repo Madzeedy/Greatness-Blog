@@ -14,17 +14,27 @@ export default function Header() {
   const path = useLocation().pathname;
 
   return (
-    <Navbar className="border-b-2 ">
+    <Navbar className="border-b-2 !bg-inherit sticky top-0 z-50">
       <Link
         to="/"
-        className="self-center whitespace-nowrap text-sm sm:text-xl dark:text-white font-semibold"
+        className="self-center whitespace-nowrap text-sm sm:text-xl dark:text-black font-semibold"
       >
         <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
           GreatNess
         </span>
-        Blogs
+        Blog
       </Link>
       <form>
+        {/*<form className="relative hidden lg:inline">
+        <input
+          type="text"
+          placeholder="Search..."
+          rightIcon={AiOutlineSearch}
+          className="bg-white dark:bg-gray-100 text-black dark:text-black px-4 py-2 rounded "
+        />
+        <AiOutlineSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-700" />
+      </form>*/}
+
         <TextInput
           type="text"
           placeholder="Search..."
@@ -32,11 +42,15 @@ export default function Header() {
           className="hidden lg:inline"
         />
       </form>
-      <Button className="w-12 h-10 lg:hidden" color="gray" pill>
+      <Button className="w-14 h-10 lg:hidden !bg-inherit" color="black" pill>
         <AiOutlineSearch />
       </Button>
-      <div className="flex gap-2 md:order-2">
-        <Button className="w-12 h-10 hidden sm:inline" color="gray" pill>
+      <div className="flex gap-2 md:order-2 ">
+        <Button
+          className="w-12 h-10 hidden sm:inline !bg-inherit"
+          color="black"
+          pill
+        >
           <FaMoon />
         </Button>
         <Link to="/sign-in">
@@ -52,13 +66,22 @@ export default function Header() {
       </div>
       <NavbarCollapse>
         <NavbarLink active={path === "/"} as={"div"}>
-          <Link to="/">Home</Link>
+          <Link to="/" className="hover:text-blue-700 dark:text-gray-700">
+            Home
+          </Link>
         </NavbarLink>
         <NavbarLink active={path === "/about"} as={"div"}>
-          <Link to="/about">About</Link>
+          <Link to="/about" className="hover:text-blue-700 dark:text-gray-700">
+            About
+          </Link>
         </NavbarLink>
         <NavbarLink active={path === "/projects"} as={"div"}>
-          <Link to="/projects">Projects</Link>
+          <Link
+            to="/projects"
+            className="hover:text-blue-700 dark:text-gray-700"
+          >
+            Projects
+          </Link>
         </NavbarLink>
       </NavbarCollapse>
     </Navbar>
