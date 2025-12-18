@@ -1,5 +1,5 @@
-import { Alert, Button, Label } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Alert, Button, Label, Spinner } from "flowbite-react";
+import { Link, useNavigate } from "react-router-dom";
 import { TextInput } from "flowbite-react";
 import { useState } from "react";
 //import { set } from "mongoose";
@@ -8,12 +8,14 @@ export default function SignUp() {
   const [formData, setFormData] = useState({});
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value.trim(),
     });
   };
+  //console.log(formData);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.username || !formData.email || !formData.password) {
@@ -34,11 +36,15 @@ export default function SignUp() {
         return setErrorMessage(data.message);
       }
       setLoading(false);
+      if (res.ok) {
+        navigate("/sign-in");
+      }
     } catch (error) {
       setErrorMessage(error.message);
       setLoading(false);
     }
   };
+
   return (
     <div className="min-h-screen mt-20">
       <div className=" flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center">
@@ -61,10 +67,9 @@ export default function SignUp() {
 
         <div className=" flex-1">
           <form className=" flex flex-col gap-4" onSubmit={handleSubmit}>
-            {/* <Label value="Your username" /> */}
             <div>
               <Label
-                htmlFor="name"
+                value="name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
               >
                 Name
@@ -80,10 +85,9 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            {/* <Label value="Your username" /> */}
             <div>
               <Label
-                htmlFor="email"
+                value="email"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
               >
                 Email
@@ -100,7 +104,7 @@ export default function SignUp() {
             {/* <Label value="Your username" /> */}
             <div>
               <Label
-                htmlFor="password"
+                value="password"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
               >
                 Password
@@ -119,9 +123,16 @@ export default function SignUp() {
               //gradientDuoTone="purpleToPink"
               pill
               disabled={loading}
-              type="Submit"
+              type="submit"
             >
-              Sign Up
+              {loading ? (
+                <>
+                  <Spinner size="sm" />
+                  <span className="pl-3">Loading...</span>
+                </>
+              ) : (
+                "Sign Up"
+              )}
             </Button>
           </form>
           <div className="flex gap-2 text-sm mt-5">
