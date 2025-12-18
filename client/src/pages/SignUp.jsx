@@ -64,7 +64,7 @@ export default function SignUp() {
             {/* <Label value="Your username" /> */}
             <div>
               <Label
-                htmlFor="email"
+                htmlFor="name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
               >
                 Name
@@ -100,7 +100,7 @@ export default function SignUp() {
             {/* <Label value="Your username" /> */}
             <div>
               <Label
-                htmlFor="email"
+                htmlFor="password"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
               >
                 Password
@@ -114,7 +114,13 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <Button disabled={loading} type="Submit">
+            <Button
+              className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:opacity-90"
+              //gradientDuoTone="purpleToPink"
+              pill
+              disabled={loading}
+              type="Submit"
+            >
               Sign Up
             </Button>
           </form>

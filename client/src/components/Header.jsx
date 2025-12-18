@@ -56,7 +56,7 @@ export default function Header() {
         <Link to="/sign-in">
           <Button
             outline
-            gradientDuoTone="purpleToBlue"
+            //gradientDuoTone="purpleToBlue"
             //className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white hover:bg-gradient-to-br focus:ring-blue-300 dark:focus:ring-blue-800 "
           >
             Sign In
