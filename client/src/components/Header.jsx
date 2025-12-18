@@ -14,7 +14,7 @@ export default function Header() {
   const path = useLocation().pathname;
 
   return (
-    <Navbar className="border-b-2 !bg-inherit sticky top-0 z-50">
+    <Navbar className="border border-blue-500 border-b-5  !bg-inherit sticky top-0 z-50">
       <Link
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl dark:text-black font-semibold"
@@ -24,25 +24,25 @@ export default function Header() {
         </span>
         Blog
       </Link>
-      <form>
-        {/*<form className="relative hidden lg:inline">
-        <input
-          type="text"
-          placeholder="Search..."
-          rightIcon={AiOutlineSearch}
-          className="bg-white dark:bg-gray-100 text-black dark:text-black px-4 py-2 rounded "
-        />
-        <AiOutlineSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-700" />
-      </form>*/}
+        <form className="relative hidden lg:inline">
+          <input
+            type="text"
+            placeholder="Search..."
+            rightIcon={AiOutlineSearch}
+            className="border dark:bg-gray-100 text-black dark:text-black px-4 py-2 rounded "
+          />
 
-        <TextInput
-          type="text"
-          placeholder="Search..."
-          rightIcon={AiOutlineSearch}
-          className="hidden lg:inline"
-        />
-      </form>
-      <Button className="w-14 h-10 lg:hidden !bg-inherit" color="black" pill>
+          {/*<TextInput
+            type="text"
+            placeholder="Search..."
+            rightIcon={AiOutlineSearch}
+            className="hidden lg:inline"
+          />*/}
+
+          <AiOutlineSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-700 cursor-pointer" />
+        </form>
+    
+      <Button className="w-14 h-10 lg:hidden " color="black" pill>
         <AiOutlineSearch />
       </Button>
       <div className="flex gap-2 md:order-2 ">
