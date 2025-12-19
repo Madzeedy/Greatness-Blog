@@ -29,7 +29,7 @@ export default function FooterComponent() {
               Blog
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6">
+          <div className="grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6 sm:flex sm:items-center sm:justify-between">
             <div>
               <FooterTitle
                 className="dark:text-black font-semibold"
@@ -57,6 +57,8 @@ export default function FooterComponent() {
             </div>
           </div>
         </div>
+        <div>... </div>
+        <div> </div>
         {/*<FooterDivider /> */}
         <div className="w-full sm:flex sm:items-center sm:justify-between">
           <FooterCopyright
