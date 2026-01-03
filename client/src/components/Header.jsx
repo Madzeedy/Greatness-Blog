@@ -1,17 +1,24 @@
 import {
   Button,
   Navbar,
+  Dropdown,
   NavbarCollapse,
   NavbarLink,
   NavbarToggle,
   TextInput,
+  Avatar,
+  DropdownHeader,
+  DropdownItem,
+  DropdownDivider,
 } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const path = useLocation().pathname;
+  const { currentUser } = useSelector((state) => state.user);
 
   return (
     <Navbar className="border border-blue-500 border-b-5  !bg-inherit sticky top-0 z-50">
@@ -24,24 +31,24 @@ export default function Header() {
         </span>
         Blog
       </Link>
-        <form className="relative hidden lg:inline">
-          <input
-            type="text"
-            placeholder="Search..."
-            rightIcon={AiOutlineSearch}
-            className="border dark:bg-gray-100 text-black dark:text-black px-4 py-2 rounded "
-          />
+      <form className="relative hidden lg:inline">
+        <input
+          type="text"
+          placeholder="Search..."
+          rightIcon={AiOutlineSearch}
+          className="border dark:bg-gray-100 text-black dark:text-black px-4 py-2 rounded "
+        />
 
-          {/*<TextInput
+        {/*<TextInput
             type="text"
             placeholder="Search..."
             rightIcon={AiOutlineSearch}
             className="hidden lg:inline"
           />*/}
 
-          <AiOutlineSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-700 cursor-pointer" />
-        </form>
-    
+        <AiOutlineSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-700 cursor-pointer" />
+      </form>
+
       <Button className="w-14 h-10 lg:hidden " color="black" pill>
         <AiOutlineSearch />
       </Button>
@@ -53,15 +60,37 @@ export default function Header() {
         >
           <FaMoon />
         </Button>
-        <Link to="/sign-in">
-          <Button
-            outline
-            //gradientDuoTone="purpleToBlue"
-            //className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white hover:bg-gradient-to-br focus:ring-blue-300 dark:focus:ring-blue-800 "
+        {currentUser ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar alt="user" img={currentUser.profilePicture} rounded />
+            }
           >
-            Sign In
-          </Button>
-        </Link>
+            <DropdownHeader>
+              <span className="block text-sm">{currentUser.username}</span>
+              <span className="block text-sm font-medium truncate">
+                {currentUser.email}
+              </span>
+            </DropdownHeader>
+            <Link to={"/dashboard?tab=profile"}>
+              <DropdownItem>Profile</DropdownItem>
+            </Link>
+            <DropdownDivider />
+            <DropdownItem>Sign Out</DropdownItem>
+          </Dropdown>
+        ) : (
+          <Link to="/sign-in">
+            <Button
+              outline
+              //gradientDuoTone="purpleToBlue"
+              //className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white hover:bg-gradient-to-br focus:ring-blue-300 dark:focus:ring-blue-800 "
+            >
+              Sign In
+            </Button>
+          </Link>
+        )}
         <NavbarToggle />
       </div>
       <NavbarCollapse>
