@@ -10,6 +10,11 @@ const userSchema = new mongoose.Schema(
     },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    profilePicture: {
+      type: String,
+      default:
+        "https://cdn.pixabay.com/photo/2023/05/02/10/35/avatar-7964945_1280.png",
+    },
   },
   { timestamp: true }
 );
