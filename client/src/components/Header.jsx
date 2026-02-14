@@ -15,11 +15,12 @@ import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon } from "react-icons/fa";
 import { useSelector } from "react-redux";
+//import { toggleTheme } from "../../redux/theme/themeSlice";
 
 export default function Header() {
   const path = useLocation().pathname;
   const { currentUser } = useSelector((state) => state.user);
-
+  //const dispatch = useDispatch();
   return (
     <Navbar className="border border-blue-500 border-b-5  !bg-inherit sticky top-0 z-50">
       <Link
@@ -53,13 +54,14 @@ export default function Header() {
         <AiOutlineSearch />
       </Button>
       <div className="flex gap-2 md:order-2 ">
-        <Button
+        {/*<Button
           className="w-12 h-10 hidden sm:inline !bg-inherit"
           color="black"
           pill
+          onClick={() => dispatch(toggleTheme())}
         >
           <FaMoon />
-        </Button>
+        </Button> */}
         {currentUser ? (
           <Dropdown
             arrowIcon={false}
