@@ -35,7 +35,10 @@ export default function DashSideBar() {
               Profile
             </SidebarItem>
           </Link>
-          <SidebarItem icon={HiArrowSmRight} className="cursor-pointer bg-pink-400">
+          <SidebarItem
+            icon={HiArrowSmRight}
+            className="cursor-pointer bg-pink-400"
+          >
             Sign Out
           </SidebarItem>
         </SidebarItemGroup>
