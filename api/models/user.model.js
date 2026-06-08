@@ -13,10 +13,10 @@ const userSchema = new mongoose.Schema(
     profilePicture: {
       type: String,
       default:
-        "https://cdn.pixabay.com/photo/2023/05/02/10/35/avatar-7964945_1280.png",
+        "https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001882.png",
     },
   },
-  { timestamp: true }
+  { timestamp: true },
 );
 
 const User = mongoose.model("User", userSchema);

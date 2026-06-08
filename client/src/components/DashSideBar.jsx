@@ -31,6 +31,7 @@ export default function DashSideBar() {
               label={"User"}
               labelColor="gray"
               className="bg-pink-400"
+              as="div"
             >
               Profile
             </SidebarItem>
