@@ -1,7 +1,12 @@
 import { Button, FileInput, TextInput } from "flowbite-react";
 import { React, useRef, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
 import { app } from "../firebase";
 0;
 
@@ -84,6 +89,7 @@ export default function DashProfile() {
             //onClick={handleImageClick}
           />
         </div>
+
         <TextInput
           type="text"
           id="username"
